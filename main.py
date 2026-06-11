@@ -1,6 +1,3 @@
-Ошибка: HTTPSConnectionPool(host='ngw.devices.sberbank.ru', port=9443): Max retries exceeded with url: /api/v2/oauth (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1016)')))
-
-
 import asyncio
 import os
 import uuid
@@ -83,7 +80,7 @@ def get_gigachat_response(user_message: str) -> str:
 
 @dp.message(Command("start"))
 async def start_command(message: Message):
-    text = (
+    await message.answer(
         "🤖 Привет! Я ai_help_rubiBot.\n\n"
         "Напишите любой вопрос, и я отвечу через ИИ.\n"
         "Команды:\n"
@@ -91,17 +88,15 @@ async def start_command(message: Message):
         "/help — справка\n"
         "/chat [текст] — задать вопрос ИИ"
     )
-    await message.answer(text)
 
 @dp.message(Command("help"))
 async def help_command(message: Message):
-    text = (
+    await message.answer(
         "📚 Справка\n\n"
         "Просто отправьте сообщение — бот ответит через ИИ.\n"
         "Или используйте команду:\n"
         "/chat Как научиться Python?"
     )
-    await message.answer(text)
 
 @dp.message(Command("chat"))
 async def chat_command(message: Message):
@@ -129,7 +124,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-
-
