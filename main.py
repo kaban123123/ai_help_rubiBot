@@ -11,7 +11,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 API_TOKEN = os.environ.get("TG_TOKEN", "").strip()
 GIGACHAT_KEY = os.environ.get("GIGACHAT_KEY", "").strip()
-GIGACHAT_SCOPE = os.environ.get("GIGACHAT_SCOPE", "bot").strip()
+GIGACHAT_SCOPE = os.environ.get("GIGACHAT_SCOPE", "GIGACHAT_API_PERS").strip()
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
